@@ -1,5 +1,8 @@
-function Warrior(name, attack, cattack) {
+var playerMadeChoise = 0;
 
+function Warrior(name, attack, cattack) {
+    this.isPlayer = 0;
+    this.isEnemy = 0;
     this.warriorName = name;
     this.attackPower = attack;
     this.counterAttack = cattack;
@@ -18,14 +21,30 @@ function Warrior(name, attack, cattack) {
         console.log(this.warriorName);
     }
 
-
 }
 
+function addToBattlefield(event) {
+    $("#characters > #" + event).animate({
+            opacity: "hide",
+        },
+        500, null,
+        function() {
+            $('#characters>#' + event).detach().prependTo('#battlefield');
+            $("#battlefield > #" + event).animate({
+                    opacity: "show",
+                },
+                500, null, null);
+        });
+}
 
 var Neo = new Warrior("Neo", 100, 80);
 var Morpheus = new Warrior("Morpheus", 120, 100);
 var Trinity = new Warrior("Trinity", 90, 110);
-
-console.log("Neo " + Neo.warriorName + Neo.attackPower + Neo.counterAttack);
 Neo.attackAction();
-console.log("Neo: " + Neo.attackPower);
+
+//$            .click(function(event) {
+
+$("div.character").click(function(event) {
+    console.log("onClick:" + event.currentTarget.id)
+    addToBattlefield(event.currentTarget.id);
+});

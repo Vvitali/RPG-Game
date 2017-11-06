@@ -1,11 +1,17 @@
-.ava {
+.character {
     width: 200px;
+    display: inline-block;
+}
 
+.character img {
+    max-width: 192px;
+    height: 100px;
 }
 
 
-#q {
+
+/*#q {
     position: fixed;
     top: 0;
     left: 0;
-}
+}*/

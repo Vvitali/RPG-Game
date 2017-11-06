@@ -12,19 +12,63 @@
 </head>
 
 <body>
-    <!--<canvas class="header" id="q"></canvas>-->
-    <div class="container">
+    <!--
+    <canvas class="header" id="q"></canvas>
+    <a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a>
+    -->
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-12">
+                <div class="header">
+                    <h1 class="text-center">RPG Game</h1>
+                </div>
             </div>
-            <div class="col-md-8">
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="text-center">
+                    <a href="#" class="btn btn-primary" role="button">Attack</a>
+                </div>
+
+            </div>
+            <div class="col-md-6" id="characters">
+
                 <h1 class="text-center">Characters</h1>
-                <a href="#" class="thumbnail ava pull-left "><img src="./assets/img/neo.jpg" alt="Neo image"></a>
-                <a href="#" class="thumbnail ava pull-left"><img src="./assets/img/Trinity.jpg" alt="Neo image"></a>
-                <a href="#" class="thumbnail ava pull-left"><img class="img-responsive" src="./assets/img/mr.smith.jpg" alt="Neo image"></a>
-                <a href="#" class="thumbnail ava pull-left"><img src="./assets/img/Moprheus.jpg" alt="Neo image"></a>
+                <div class="thumbnail character" id="Neo">
+                    <img src="./assets/img/neo.jpg" alt="Neo image">
+                    <div class="caption">
+                        <h3>Neo</h3>
+                        <p>attackPower:0, <br> counterAttackPower: 0</p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="thumbnail character" id="Trinity">
+                    <img src="./assets/img/Trinity.jpg" alt="Neo image">
+                    <div class="caption">
+                        <h3>Trinity</h3>
+                        <p>attackPower:0, <br> counterAttackPower: 0</p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="thumbnail character" id="Moprheus">
+                    <img src="./assets/img/Moprheus.jpg" alt="Moprheus image">
+                    <div class="caption">
+                        <h3>Trinity</h3>
+                        <p>attackPower:0, <br> counterAttackPower: 0</p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="thumbnail character" id="Smith">
+                    <img src="./assets/img/mr.smith.jpg" alt="Smith image">
+                    <div class="caption">
+                        <h3>Mr.Smith</h3>
+                        <p>attackPower:0, <br> counterAttackPower: 0</p>
+                        <p></p>
+                    </div>
+                </div>
+
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Statistic</h3>
@@ -37,15 +81,16 @@
         </div>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-9">
+            <div class="col-md-7">
                 <h1 class="text-center">Battlefield</h1>
+                <div id="battlefield"></div>
             </div>
-            <div class="col-md-2"></div>
+            <div class="col-md-3"></div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="script.js"></script>
-    <script type="text/javascript" src="../Homework-3/assets/javascript/header.js"></script>
+    <!--<script type="text/javascript" src="../Homework-3/assets/javascript/header.js"></script>-->
 </body>
 
 </html>
