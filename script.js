@@ -2,6 +2,7 @@ var PlayerSpot = null;
 var EnemySpot = null;
 var turn = "PlayerSpot";
 
+
 function Warrior(name, health, attack, cattack) {
     this.isPlayer = 0;
     this.isEnemy = 0;
@@ -10,14 +11,15 @@ function Warrior(name, health, attack, cattack) {
     this.attackPower = attack;
     this.counterAttackPower = cattack;
     this.healthPoints = health;
-
+    rounds++;
     Warrior.prototype.attackAction = function(EnemyChar) {
-        console.log(this.warriorName + ": " + arrayOfCharacters[PlayerSpot].healthPoints);
         EnemyChar.counterAttackAction(this);
         EnemyChar.healthPoints -= this.attackPower;
         this.attackPower += this.BaseAttackPower;
-        console.log(this.warriorName + ": " + this.attackPower);
-
+        console.log(this.warriorName + " health: " + arrayOfCharacters[PlayerSpot].healthPoints);
+        console.log(this.warriorName + " attackPower: " + this.attackPower);
+        console.log(EnemyChar.warriorName + " health2:" + EnemyChar.healthPoints);
+        console.log("------------");
     };
     //$("#EnemySpot.character > div > p").html(this.healthPoints);
     Warrior.prototype.counterAttackAction = function(Enemy) {
@@ -54,36 +56,54 @@ function addToBattlefield(event) {
                 $("div.character").unbind('click');
                 $("#btn-attack").click(function() {
                     arrayOfCharacters[PlayerSpot].attackAction(arrayOfCharacters[EnemySpot]);
+                    //console.log(arrayOfCharacters[PlayerSpot].warriorName + arrayOfCharacters[PlayerSpot].healthPoints);
                     $("#EnemySpot> .character > div > p").html('Health: ' + arrayOfCharacters[EnemySpot].healthPoints + '<br>Attack: ' + arrayOfCharacters[EnemySpot].attackPower + '<br>Counter attack: ' + arrayOfCharacters[EnemySpot].counterAttackPower);
                     $("#PlayerSpot> .character > div > p").html('Health: ' + arrayOfCharacters[PlayerSpot].healthPoints + '<br>Attack: ' + arrayOfCharacters[PlayerSpot].attackPower + '<br>Counter attack: ' + arrayOfCharacters[PlayerSpot].counterAttackPower);
 
                     if (arrayOfCharacters[EnemySpot].healthPoints <= 0) {
                         $(".panel-body").html(arrayOfCharacters[PlayerSpot].warriorName + " is winner!")
-                        $("#PlayerSpot> .character").hide();
+                        //$("#EnemySpot> .character").hide();
+                        $("#EnemySpot> .character").detach();
+                        $("#btn-attack").unbind('click');
+                        EnemySpot = null;
+                        console.log(rounds)
+
+                        if (rounds > 0) {
+                            charactersClickHandlerActivate();
+                            rounds--;
+                        }
+                        else {
+                            alert("You are winner!")
+                            $("#q, #w").show();
+                        }
                     }
                     if (arrayOfCharacters[PlayerSpot].healthPoints <= 0) {
                         $(".panel-body").html(arrayOfCharacters[EnemySpot].warriorName + " is winner!")
-                        $("#EnemySpot> .character").hide();
+                        $("#PlayerSpot> .character").detach();
+                        alert("Game over")
                     }
                 });
                 console.log("Attack handler assigned: " + arrayOfCharacters[PlayerSpot].warriorName);
             }
         });
-
 }
 
 var arrayOfCharacters = {};
-
-arrayOfCharacters.Neo = new Warrior("Neo", 150, 100, 80);
+var rounds = -2;
+arrayOfCharacters.Neo = new Warrior("Neo", 750, 20, 20);
 arrayOfCharacters.Neo.activation();
-arrayOfCharacters.Morpheus = new Warrior("Morpheus", 250, 120, 100);
+arrayOfCharacters.Morpheus = new Warrior("Morpheus", 750, 30, 30);
 arrayOfCharacters.Morpheus.activation();
-arrayOfCharacters.Trinity = new Warrior("Trinity", 100, 90, 110);
+arrayOfCharacters.Trinity = new Warrior("Trinity", 750, 20, 25);
 arrayOfCharacters.Trinity.activation();
-arrayOfCharacters.Smith = new Warrior("Smith", 200, 90, 110);
+arrayOfCharacters.Smith = new Warrior("Smith", 800, 35, 35);
 arrayOfCharacters.Smith.activation();
+$("#q, #w").hide();
 
-$("div.character").click(function(event) {
-    console.log("onClick: " + event.currentTarget.id)
-    addToBattlefield(event.currentTarget.id);
-});
+function charactersClickHandlerActivate() {
+    $("div.character").click(function(event) {
+        console.log("onClick: " + event.currentTarget.id)
+        addToBattlefield(event.currentTarget.id);
+    });
+}
+charactersClickHandlerActivate();

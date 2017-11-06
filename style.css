@@ -8,10 +8,21 @@
     height: 100px;
 }
 
+.btn-primary {
+    z-index: 0;
+}
 
-
-/*#q {
+#q {
     position: fixed;
     top: 0;
     left: 0;
-}*/
+    z-index: 1;
+}
+
+#w {
+    position: fixed;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #00FF00;
+    text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
+}
