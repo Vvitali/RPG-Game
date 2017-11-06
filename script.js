@@ -72,9 +72,7 @@ function addToBattlefield(event) {
 
 }
 
-var arrayOfCharacters = {
-
-};
+var arrayOfCharacters = {};
 
 arrayOfCharacters.Neo = new Warrior("Neo", 150, 100, 80);
 arrayOfCharacters.Neo.activation();
